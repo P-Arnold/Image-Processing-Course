@@ -1,0 +1,11 @@
+function totalEntropy = haarEntropy(H)
+    [vRes,hRes] = size(H);
+    lolo = H(1:vRes/2,1:hRes/2);
+    hilo = H(1:vRes/2,(hRes/2)+1:end);
+    lohi = H((vRes/2)+1:end,1:hRes/2);
+    hihi = H((vRes/2)+1:end,(hRes/2)+1:end);
+    haarEntropy = calcEntropy(lolo);
+    haarEntropy = haarEntropy + calcEntropy(hilo);
+    haarEntropy = haarEntropy + calcEntropy(lohi);
+    haarEntropy = haarEntropy + calcEntropy(hihi);
+    totalEntropy = haarEntropy/4;
